@@ -198,7 +198,7 @@ public class AgentLoader
                     "shaded/WindowsVirtualMachine$PipedInputStream.class"
             );
             final ClassLoader systemLoader = ClassLoader.getSystemClassLoader();
-            List<Class<?>> classes = new ArrayList<>();
+            List<Class> classes = new ArrayList<Class>();
             for (String s : shaded)
             {
                 // have to load those class in the system class loader
@@ -224,7 +224,7 @@ public class AgentLoader
         }
         try
         {
-            Object agentLoaderObject = agentLoaderClass.newInstance();
+            final Object agentLoaderObject = agentLoaderClass.newInstance();
 
             // the agent loader might be instantiated in another class loader
             // so no interface it implements is guaranteed to be visible here.
